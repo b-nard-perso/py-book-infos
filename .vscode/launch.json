@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // args to pick arguments = ${command:pickArgs} 
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Reference",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "py-book-infos.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--check-external-reference"
+            ]
+        },
+        {
+            "name": "Test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "py-book-infos.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--test"
+            ]
+        },
+        {
+            "name": "Pick arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "py-book-infos.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${command:pickArgs}"
+            ]
+        }
+    ]
+}
