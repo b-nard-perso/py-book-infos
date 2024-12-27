@@ -242,17 +242,18 @@ class BookInfos:
         if self.verbose > 0:
             print(f"File {filename}.csv exported to {self.output_dir}")
 
-    def export_to_excel(self, df: pd.DataFrame, filename: str):
+    def export_to_excel(self, df: pd.DataFrame, filename: str, save_index: bool = False):
         """
         Export DataFrame to Excel
         
         Args:
-        df: pd.DataFrame
-        filename: str
+        df: pd.DataFrame ; DataFrame to export
+        filename: str ; name of the Excel file (without extension)
+        save_index: bool ; save the index in the Excel file (default: False)
         """
         df.to_excel(
             f"{self.output_dir}/{filename}.xlsx", 
-            index=False
+            index=save_index
         )
         if self.verbose > 0:
             print(f"File {filename}.xlsx exported to {self.output_dir}")
@@ -355,5 +356,5 @@ class BookInfos:
         df_books = book_titles.set_index('ISBN').join(df_books.set_index('ISBN'), how='inner', rsuffix='_infos')
         if self.verbose > 0:
             print(book_titles)
-        self.export_to_excel(df_books, filename + '_infos')
+        self.export_to_excel(df_books, filename + '_infos'), True
         return book_titles
